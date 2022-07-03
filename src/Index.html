@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        /*font-family: 'Bebas Neue', cursive;*/
+        @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+        /*font-family: 'Slabo 27px', serif;*/
+        :root {
+            --mix-green-blue: background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+            --mix-green-blue-ligth: rgb(73, 126, 92);
+            --gray: rgb(50, 56, 42);
+        }
+       body {
+            height:100vh;
+            margin:0;
+            overflow:hidden;
+            font-family: 'Slabo 27px', serif;
+        }
+
+        
+        .page {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+        }
+        
+        .container{
+            z-index:1;
+            position: absolute;
+            display: grid;
+            grid-template-columns: 55% 45%;
+            grid-template-rows: 20% 50% 30%;
+            grid-template-areas: "nav     aside"
+                                 "section aside"
+                                 "footer  aside";
+            height: 100%;
+            width: 100%;
+        }
+
+        .navbar {
+            background-color: var(--mix-green-blue-ligth);
+            grid-area: nav;
+            display: flex;
+        }
+
+        .navbar__content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0 0 0 70px;
+
+            animation: 2s navbar 0.5s ease-in-out;
+        }
+
+        @keyframes navbar {
+            0% {
+                transform: translateY(-200px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .navbar__content img {
+            width: 80px;
+        }
+
+        .navbar__content ul {
+            display: flex;
+            justify-content: space-evenly;
+            list-style: none;
+            padding: 0;
+            width: 430px;
+        }
+
+        .navbar__content ul li a {
+            color: #fff;
+            font-weight: 300;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            grid-area: section;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 80px;
+
+            animation: 2s main 0.5s ease-in-out;
+        }
+
+        .main-content p:first-child{
+            font-size: 36px;
+            font-weight: 300;
+            margin: 0 0 -14px 44px;
+            width: 60%;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+            font-family: 'Bebas Neue', cursive;
+            margin: 0 0 28px 0;
+        }
+
+        .main-content p:last-child{
+            font-weight: 300;
+        }
+
+        @keyframes main {
+            0% {
+                transform: translateY(-600px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .side-content {
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            align-items: center;
+
+            grid-area: aside;
+        }
+
+        .side-content p {
+            transform: rotate(-92deg);
+            font-size: 36px;
+
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            opacity: 0;
+
+            animation-name: side-content-text;
+            animation-duration: 3s;
+            animation-delay: 2s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        .side-content img {
+            width: 100%;
+            grid-column: 2 / 6;
+            grid-row: 1 / 2;
+
+            animation: 5s side-content-img 1 ease;
+            z-index: 1;
+        }
+
+        @keyframes side-content-img {
+            0% {
+                transform: translateX(600px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .side-content div {
+            background: #000;
+            grid-column: 4 / 7;
+            grid-row: 1 / 2;
+            height: 100%;
+        }
+
+
+
+        .footer {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+
+            background-color: #000;
+            border-radius: 0 80px 0  0;
+
+            transform: translateX(100%);
+
+            animation-name: footer;
+            animation-duration: 0.5s;
+            animation-delay: 2.5s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        .footer div:hover img {
+            cursor: pointer;
+            transform: translateY(-20px) scale(1.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .footer div img {
+            width: 150px;
+            position: absolute;
+            bottom: 30px;
+            transform: translateY(0px) scale(1.3);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .footer div {
+            background-color: rgba(14,174,87,1);
+            width: 130px;
+            height: 50%;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        @keyframes footer {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+
+        @keyframes side-content-text {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes side-content-text {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .loader {
+            background-image: url('https://static1-es.millenium.gg/articles/1/31/40/1/@/144540-ruined-article_m-1.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 3;
+
+            animation: loader 2s linear forwards;
+
+        }
+
+        
+        @keyframes loader {
+            0%{
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            95%{
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            100%{
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .loader div {
+            background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 20px; 
+            border: 2px solid black;
+
+            transform: scale(0);
+
+            animation: scaling 1500ms ease-in-out infinite;
+        }
+
+        .loader div:nth-child(1){
+            animation-delay: 0.2s;
+        }
+        .loader div:nth-child(2){
+            animation-delay: 0.4s;
+        }
+        .loader div:nth-child(3){
+            animation-delay: 0.6s;
+        }
+
+        @keyframes scaling {
+            0%, 100%{
+                transform: scale(1.3);
+            }
+            50%{
+                transform: scale(.8);
+            }
+            
+        }
+
+        .hidden {
+            display: none !important; 
+        }
+        .visible {
+            display: grid;
+        }
+
+        .modal {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            z-index: 4;
+
+            display: grid;
+            place-items: center;
+        }
+
+        .modal__content {
+            background-color: rgb(73 126 92);
+            width: 40%;
+            height: 62%;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+        }
+
+        .modal__content--slider {
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+        }
+
+        .cards {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .card {
+            /* background: yellow; */
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            transition: transform 0.5s ease ;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        #radio-1:checked ~ .cards #card-1,
+        #radio-2:checked ~ .cards #card-2,
+        #radio-3:checked ~ .cards #card-3 {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            z-index: 1;
+        }
+        #radio-1:checked ~ .cards #card-2,
+        #radio-2:checked ~ .cards #card-3,
+        #radio-3:checked ~ .cards #card-1 {
+            transform: translateX(40%) scale(0.8);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        #radio-1:checked ~ .cards #card-3,
+        #radio-2:checked ~ .cards #card-1,
+        #radio-3:checked ~ .cards #card-2 {
+            transform: translateX(-40%) scale(0.8);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        #radio-1,
+        #radio-2,
+        #radio-3 {
+            display: none;
+        }
+        .button {
+            width: 150px;
+            height: 30px;
+            background-color: rgb(14 174 87);
+            border-radius: 0 0 50px 50px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            text-align: center;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Main Content -->
+        <section class="container">
+            <nav class="navbar">
+                <div class="navbar__content">
+                    <img src="img/png-clipart-league-of-legends-computer-icons-riot-games-league-of-legends-game-logo-removebg-preview.png" alt="imagen de viego de league of legends">
+                    <ul>
+                        <li><a href="/">Exclusive</a></li>
+                        <li><a href="/">New</a></li>
+                        <li><a href="/">Gitf cards</a></li>
+                        <li><a href="/">Find a Store</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <section class="main-content">
+                <p>Build your</p>
+                <h1>Super Hero!</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, neque?Lorem ipsum dolor sit amet.</p>
+            </section>
+
+            <section class="side-content">
+                <div></div>
+                <p>Viego</p>
+                <img src="./img/RotS_Model_Viego_Final_Form_Evil_Smile (1).png" alt="">
+            </section>
+
+            <section class="footer">
+                <div id="button1">
+                    <img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt58e45552e2c99006/600100d9e4028c63a64da15e/07_ViegoArmor.png" alt="">
+                </div>
+
+                <div id="button2">
+                    <img src="/src/img/31VoK516hxS._SR600_315_PIWhiteStrip_BottomLeft_0_35_SCLZZZZZZZ_FMpng_BG255_255_255-removebg-preview.png" alt="">
+                </div>
+
+                <div id="button3">
+                    <img src="https://pbs.twimg.com/media/Ey4QyhPWEAEatmT.png" alt="">
+                </div>
+            </section>
+        </section>
+        <!-- Loader  -->
+        <section class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
+        <!-- Modal  -->
+        <section class="modal hidden">
+            <div class="modal__content">
+                <img width="30px" class="modal__content--close" src="./img/icons8-x-100.png" alt="">
+
+                <div class="modal__content--slider">
+                    <input type="radio" name="slider-1" id="radio-1" checked>
+                    <input type="radio" name="slider-1" id="radio-2">
+                    <input type="radio" name="slider-1" id="radio-3">
+                    <div class="cards">
+                        <label for="radio-1" id="card-1" class="card">
+                            <img width="200px" heigth="190px" src="./img/03_Viego_Portrait_Web.jpg" alt="">
+                        </label>
+    
+                        <label for="radio-2" id="card-2" class="card">
+                            <img width="200px" heigth="200px" src="./img/3HZ5CDU35VBHVC6O5ML6BLV5YY.jpg" alt="">
+                        </label>
+    
+                        <label for="radio-3" id="card-3" class="card">
+                            <img width="200px" heigth="200px" src="./img/e213080e640e04a36bd5caf4f28dc8fd.jpg" alt="">
+                        </label>
+                    </div>
+                </div>
+                <a class="button" href="https://www.leagueofgraphs.com/es/champions/builds/viego">Build</a>
+            </div>
+        </section>
+            <!-- Modal 2 -->
+        <section class="modal2 hidden">
+            <div class="modal__content2">
+                <img width="30px" class="modal__content--close2" src="./img/icons8-x-100.png" alt="">
+
+                <div class="modal__content--slider">
+                    <input type="radio" name="slider-2" id="radio-4" checked>
+                    <input type="radio" name="slider-2" id="radio-5">
+                    <input type="radio" name="slider-2" id="radio-6">
+                    <div class="cards">
+                        <label for="radio-4" id="card-4" class="card">
+                            <img width="200px" heigth="190px" src="./img_espadas/Hb1cb104582f64ae1bf2e7a6be3dfa38fE.jpg" alt="">
+                        </label>
+    
+                        <label for="radio-5" id="card-5" class="card">
+                            <img width="200px" heigth="200px" src="./img_espadas/Juego-de-cosplay-de-LOL-Viego-accesorios-de-armas-para-fiesta-de-Halloween-Navidad-mascarada-espect.webp" alt="">
+                        </label>
+    
+                        <label for="radio-6" id="card-6" class="card">
+                            <img width="200px" heigth="200px" src="./img_espadas/Juego-popular-de-espada-de-LOL-Viego-Cosplay-de-PVC-armas-accesorios-para-Halloween-carnaval-fiesta.webp" alt="">
+                        </label>
+                    </div>
+                </div>
+                <a class="button" href="https://www.leagueofgraphs.com/es/champions/builds/viego">Build</a>
+            </div>
+        </section>
+
+        <!-- Modal #3 -->
+        <section class="modal3 hidden">
+            <div class="modal__content3">
+                <img width="30px" class="modal__content--close3" src="./img/icons8-x-100.png" alt="">
+
+                <div class="modal__content--slider">
+                    <input type="radio" name="slider-3" id="radio-5" checked>
+                    <input type="radio" name="slider-3" id="radio-6">
+                    <input type="radio" name="slider-3" id="radio-7">
+                    <div class="cards">
+                        <label for="radio-5" id="card-5" class="card">
+                            <img width="200px" heigth="190px" src="./img/03_Viego_Portrait_Web.jpg" alt="">
+                        </label>
+    
+                        <label for="radio-6" id="card-6" class="card">
+                            <img width="200px" heigth="200px" src="./img/3HZ5CDU35VBHVC6O5ML6BLV5YY.jpg" alt="">
+                        </label>
+    
+                        <label for="radio-7" id="card-7" class="card">
+                            <img width="200px" heigth="200px" src="./img/e213080e640e04a36bd5caf4f28dc8fd.jpg" alt="">
+                        </label>
+                    </div>
+                </div>
+                <a class="button" href="https://www.leagueofgraphs.com/es/champions/builds/viego">Build</a>
+            </div>
+        </section>
+    </div>
+    <script>
+        // MODAL #1
+        const modal = document.querySelector('.modal');
+        const button = document.querySelector('#button1');
+        const closeBtn = document.querySelector('.modal__content--close');
+        
+        button.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('visible');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('visible');
+        });
+
+        // MODAL #2
+        const modal2 = document.querySelector('.modal2');
+        const button2 = document.querySelector('#button2');
+        const closeBtn2 = document.querySelector('.modal__content--close2');
+        
+        button2.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('visible');
+        });
+
+        closeBtn2.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('visible');
+        });
+
+        // MODAL #3
+        const modal3 = document.querySelector('.modal3');
+        const button3 = document.querySelector('#button3');
+        const closeBtn3 = document.querySelector('.modal__content--close3');
+        
+        button3.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('visible');
+        });
+
+        closeBtn3.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('visible');
+        });
+    </script>
+</body>
+</html>
